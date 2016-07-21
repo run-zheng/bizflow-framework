@@ -4,7 +4,9 @@ import java.util.concurrent.TimeUnit;
 
 import org.junit.Test;
 
+import com.bizflow.core.definition.ProcessorDefinition;
 import com.bizflow.core.execute.IInvoker;
+import com.bizflow.core.execute.IInvoker7;
 import com.bizflow.core.flow.builder.BizFlowConfigBuilder;
 import com.bizflow.core.flow.config.BizFlowConfig;
 import com.bizflow.enums.Scope;
@@ -41,6 +43,35 @@ public class BizFlowConfigBuilderTest {
 				.global().global(Boolean.TRUE)
 				.end() 
 			.processors()
+				.before("")
+					.name("")
+					.alias("")
+					.description("")
+					.defineName("")
+					.invoker(new IInvoker7<String>(){
+						@Override
+						public <BizFlow, FlowConfig, DataProvider, Pattern, 
+								BeanType, BigDecimal, ProcessorGroupType> String invoke(
+								BizFlow a, FlowConfig b, DataProvider c, Pattern d, 
+								BeanType e, BigDecimal f, ProcessorGroupType g) {
+							return null;
+						}
+					})
+					.fromAbstractDefinition(new ProcessorDefinition())
+					.end()
+				.before("", "")
+				.before("", "", "")
+				.beforeBuilder().end()
+				.beforeByDefineName("processorName")
+				.afterByDefineName("")
+				.onCompleteByDefineName("")
+				.onExceptionByDefineName("")
+				.onExceptionByDefineName("")
+				.onFinallyByDefineName("")	
+				.executerByDefineName("")
+				.end()
+			.processors("groupName")
+					
 				.end()
 /*			.processors("groupName")
 				.end()*/

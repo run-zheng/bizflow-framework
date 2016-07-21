@@ -2,20 +2,21 @@ package com.bizflow.core.flow.builder;
 
 import com.bizflow.core.flow.config.AbstractExecutableConfig;
 
-public class AbstractExecutableBuilder<P, M, D extends AbstractExecutableConfig> 
+public class AbstractExecutableBuilder<P, M extends AbstractExecutableBuilder<P, M, D>, D extends AbstractExecutableConfig> 
 	extends AbstractConfigBuilder<P, M, D>
 	implements IExecutableConfigBuilder<P, M, D>{
 
-	private SimpleInvokableBuilder<IExecutableConfigBuilder<P, M, D>> beforeBuilder;
-	private SimpleInvokableBuilder<IExecutableConfigBuilder<P, M, D>> afterBuilder;
-	private SimpleInvokableBuilder<IExecutableConfigBuilder<P, M, D>> onCompleteBuilder;
-	private SimpleInvokableBuilder<IExecutableConfigBuilder<P, M, D>> onExceptionBuilder;
-	private SimpleInvokableBuilder<IExecutableConfigBuilder<P, M, D>> onFinallyBuilder;
-	private SimpleInvokableBuilder<IExecutableConfigBuilder<P, M, D>> executerBuilder;
+	private SimpleInvokableBuilder<M> beforeBuilder;
+	private SimpleInvokableBuilder<M> afterBuilder;
+	private SimpleInvokableBuilder<M> onCompleteBuilder;
+	private SimpleInvokableBuilder<M> onExceptionBuilder;
+	private SimpleInvokableBuilder<M> onFinallyBuilder;
+	private SimpleInvokableBuilder<M> executerBuilder;
 	
 
-	private SimpleInvokableBuilder<IExecutableConfigBuilder<P, M, D>> simpleInvokableBuilder(String name){
-		return SimpleInvokableBuilder.<IExecutableConfigBuilder<P, M, D>>createSimpleInvokableBuilder(this, name); 
+	@SuppressWarnings("unchecked")
+	private SimpleInvokableBuilder<M> simpleInvokableBuilder(String name){
+		return SimpleInvokableBuilder.createSimpleInvokableBuilder((M)this, name); 
 	}
 	@Override
 	public M beforeByDefineName(String defineName) {
@@ -108,57 +109,57 @@ public class AbstractExecutableBuilder<P, M, D extends AbstractExecutableConfig>
 		return myself();
 	}
 	@Override
-	public SimpleInvokableBuilder<IExecutableConfigBuilder<P, M, D>> before(String name) {
+	public SimpleInvokableBuilder<M> before(String name) {
 		this.beforeBuilder =  simpleInvokableBuilder(name);
 		return this.beforeBuilder; 
 	}
 	@Override
-	public SimpleInvokableBuilder<IExecutableConfigBuilder<P, M, D>> after(String name) {
+	public SimpleInvokableBuilder<M> after(String name) {
 		this.afterBuilder = simpleInvokableBuilder(name);
 		return this.afterBuilder; 
 	}
 	@Override
-	public SimpleInvokableBuilder<IExecutableConfigBuilder<P, M, D>> onComplete(String name) {
+	public SimpleInvokableBuilder<M> onComplete(String name) {
 		this.onCompleteBuilder = simpleInvokableBuilder(name);
 		return this.onCompleteBuilder; 
 	}
 	@Override
-	public SimpleInvokableBuilder<IExecutableConfigBuilder<P, M, D>> onException(String name) {
+	public SimpleInvokableBuilder<M> onException(String name) {
 		this.onExceptionBuilder = simpleInvokableBuilder(name);
 		return this.onExceptionBuilder; 
 	}
 	@Override
-	public SimpleInvokableBuilder<IExecutableConfigBuilder<P, M, D>> onFinally(String name) {
+	public SimpleInvokableBuilder<M> onFinally(String name) {
 		this.onFinallyBuilder = simpleInvokableBuilder(name);
 		return this.onFinallyBuilder; 
 	}
 	@Override
-	public SimpleInvokableBuilder<IExecutableConfigBuilder<P, M, D>> executer(String name) {
+	public SimpleInvokableBuilder<M> executer(String name) {
 		this.executerBuilder =  simpleInvokableBuilder(name);
 		return this.executerBuilder; 
 	}
 	@Override
-	public SimpleInvokableBuilder<IExecutableConfigBuilder<P, M, D>> beforeBuilder() {
+	public SimpleInvokableBuilder<M> beforeBuilder() {
 		return this.beforeBuilder;
 	}
 	@Override
-	public SimpleInvokableBuilder<IExecutableConfigBuilder<P, M, D>> afterBuilder() {
+	public SimpleInvokableBuilder<M> afterBuilder() {
 		return this.afterBuilder;
 	}
 	@Override
-	public SimpleInvokableBuilder<IExecutableConfigBuilder<P, M, D>> onCompleteBuilder() {
+	public SimpleInvokableBuilder<M> onCompleteBuilder() {
 		return this.onCompleteBuilder; 
 	}
 	@Override
-	public SimpleInvokableBuilder<IExecutableConfigBuilder<P, M, D>> onExceptionBuilder() {
+	public SimpleInvokableBuilder<M> onExceptionBuilder() {
 		return this.onExceptionBuilder; 
 	}
 	@Override
-	public SimpleInvokableBuilder<IExecutableConfigBuilder<P, M, D>> onFinallyBuilder() {
+	public SimpleInvokableBuilder<M> onFinallyBuilder() {
 		return this.onFinallyBuilder; 
 	}
 	@Override
-	public SimpleInvokableBuilder<IExecutableConfigBuilder<P, M, D>> executerBuilder() {
+	public SimpleInvokableBuilder<M> executerBuilder() {
 		return this.executerBuilder; 
 	}
 }

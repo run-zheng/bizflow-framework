@@ -1,6 +1,7 @@
 package com.bizflow.core.flow.builder;
 
 import com.bizflow.core.execute.IInvoker;
+import com.bizflow.core.flow.config.AbstractGroupConfig;
 import com.bizflow.core.flow.config.BizFlowConfig;
 
 public class BizFlowConfigBuilder extends AbstractConfigBuilder<BizFlowConfigBuilder, BizFlowConfigBuilder, BizFlowConfig>{
@@ -44,8 +45,13 @@ public class BizFlowConfigBuilder extends AbstractConfigBuilder<BizFlowConfigBui
 		return myself(); 
 	}
 
-	public AbstractBuilder<BizFlowConfigBuilder, BizFlowConfigBuilder, BizFlowConfig> processors() {
-		// TODO Auto-generated method stub
+	public AbstractGroupBuilder<BizFlowConfigBuilder, AbstractGroupBuilder<?, ?, ?>, AbstractGroupConfig> processors() {
+		// 默认sequence processor group 
+		return null;
+	}
+
+	public AbstractGroupBuilder<BizFlowConfigBuilder,  AbstractGroupBuilder<?, ?, ?>, AbstractGroupConfig> processors(String string) {
+		// 默认sequence processor group
 		return null;
 	}
 }
