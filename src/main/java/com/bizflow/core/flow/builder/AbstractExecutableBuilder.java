@@ -44,8 +44,8 @@ public class AbstractExecutableBuilder<P, M extends AbstractExecutableBuilder<P,
 		return myself();
 	}
 	@Override
-	public M executerByDefineName(String defineName) {
-		executer(defineName, defineName);
+	public M customExecuterByDefineName(String defineName) {
+		customExecuter(defineName, defineName);
 		return myself();
 	}
 	@Override
@@ -74,7 +74,7 @@ public class AbstractExecutableBuilder<P, M extends AbstractExecutableBuilder<P,
 		return myself();
 	}
 	@Override
-	public M executer(String name, String defineName) {
+	public M customExecuter(String name, String defineName) {
 		this.executerBuilder = simpleInvokableBuilder(name).defineName(defineName);
 		return myself();
 	}
@@ -104,7 +104,7 @@ public class AbstractExecutableBuilder<P, M extends AbstractExecutableBuilder<P,
 		return myself();
 	}
 	@Override
-	public M executer(String name, String defineName, String alias) {
+	public M customExecuter(String name, String defineName, String alias) {
 		this.executerBuilder  = simpleInvokableBuilder(name).defineName(defineName).alias(alias);
 		return myself();
 	}
@@ -134,7 +134,7 @@ public class AbstractExecutableBuilder<P, M extends AbstractExecutableBuilder<P,
 		return this.onFinallyBuilder; 
 	}
 	@Override
-	public SimpleInvokableBuilder<M> executer(String name) {
+	public SimpleInvokableBuilder<M> customExecuter(String name) {
 		this.executerBuilder =  simpleInvokableBuilder(name);
 		return this.executerBuilder; 
 	}
@@ -159,7 +159,7 @@ public class AbstractExecutableBuilder<P, M extends AbstractExecutableBuilder<P,
 		return this.onFinallyBuilder; 
 	}
 	@Override
-	public SimpleInvokableBuilder<M> executerBuilder() {
+	public SimpleInvokableBuilder<M> customExecuterBuilder() {
 		return this.executerBuilder; 
 	}
 }

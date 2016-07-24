@@ -68,10 +68,18 @@ public class BizFlowConfigBuilderTest {
 				.onExceptionByDefineName("")
 				.onExceptionByDefineName("")
 				.onFinallyByDefineName("")	
-				.executerByDefineName("")
+				.customExecuterByDefineName("")
 				.end()
 			.processors("groupName")
-					
+				.processorByDefineName("defineName")
+				.processor("processName", "defineName")
+				.processor("processName", "defineName", "alias")
+				.processor("processName", new IInvoker<String>() {
+					@Override
+					public String invoke() {
+						return null;
+					}
+				})
 				.end()
 /*			.processors("groupName")
 				.end()*/
