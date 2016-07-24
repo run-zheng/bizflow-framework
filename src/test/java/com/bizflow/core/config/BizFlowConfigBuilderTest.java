@@ -72,15 +72,40 @@ public class BizFlowConfigBuilderTest {
 				.end()
 			.processors("groupName")
 				.processorByDefineName("defineName")
-				.processor("processName", "defineName")
-				.processor("processName", "defineName", "alias")
-				.processor("processName", new IInvoker<String>() {
+				.processor("processorName", "defineName")
+				.processor("processorName", "defineName", "alias")
+				.processor("processorName", new IInvoker<String>() {
 					@Override
 					public String invoke() {
 						return null;
 					}
 				})
+				.processor("processorName")
+					.name("")
+					.alias("")
+					.description("")
+					.defineName("")
+					.invoker(new IInvoker7<String>(){
+						@Override
+						public <BizFlow, FlowConfig, DataProvider, Pattern, 
+								BeanType, BigDecimal, ProcessorGroupType> String invoke(
+								BizFlow a, FlowConfig b, DataProvider c, Pattern d, 
+								BeanType e, BigDecimal f, ProcessorGroupType g) {
+							return null;
+						}
+					})
+					.fromAbstractDefinition(new ProcessorDefinition())
+					.end()
+				.processor("processorName")
+					.beforeByDefineName("processorName")
+					.afterByDefineName("")
+					.onCompleteByDefineName("")
+					.onExceptionByDefineName("")
+					.onExceptionByDefineName("")
+					.onFinallyByDefineName("")	
+					.customExecuterByDefineName("")
 				.end()
+			.end()
 /*			.processors("groupName")
 				.end()*/
 			///////////////////////////////////////////
