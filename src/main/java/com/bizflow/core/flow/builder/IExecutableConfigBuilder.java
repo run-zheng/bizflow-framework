@@ -2,7 +2,8 @@ package com.bizflow.core.flow.builder;
 
 import com.bizflow.core.flow.config.AbstractExecutableConfig;
 
-public interface IExecutableConfigBuilder<P, M extends IExecutableConfigBuilder<P, M, D>, D extends AbstractExecutableConfig> {
+public interface IExecutableConfigBuilder<P, M extends IExecutableConfigBuilder<P, M, D>, D extends AbstractExecutableConfig> 
+	extends IBuilder<P, M, D>{
 	public M beforeByDefineName(String defineName); 
 	public M afterByDefineName(String defineName); 
 	public M onCompleteByDefineName(String defineName); 

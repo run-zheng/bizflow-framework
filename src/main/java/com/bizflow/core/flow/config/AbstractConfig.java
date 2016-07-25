@@ -7,7 +7,7 @@ import java.io.Serializable;
  * @author zhengrun 2016年7月5日
  *
  */
-public class AbstractConfig implements Serializable{
+public class AbstractConfig implements Serializable, IConfig{
 	/**
 	 * 
 	 */
@@ -28,22 +28,46 @@ public class AbstractConfig implements Serializable{
 	 */
 	private String description;
 	
+	/* (non-Javadoc)
+	 * @see com.bizflow.core.flow.config.IConfig#getName()
+	 */
+	@Override
 	public String getName() {
 		return name;
 	}
+	/* (non-Javadoc)
+	 * @see com.bizflow.core.flow.config.IConfig#setName(java.lang.String)
+	 */
+	@Override
 	public void setName(String name) {
 		this.name = name;
 	}
+	/* (non-Javadoc)
+	 * @see com.bizflow.core.flow.config.IConfig#setAlias(java.lang.String)
+	 */
+	@Override
 	public void setAlias(String alias) {
 		this.alias = alias;
 	}
+	/* (non-Javadoc)
+	 * @see com.bizflow.core.flow.config.IConfig#getAlias()
+	 */
+	@Override
 	public String getAlias() {
 		return alias;
 	}
 	
+	/* (non-Javadoc)
+	 * @see com.bizflow.core.flow.config.IConfig#getDescription()
+	 */
+	@Override
 	public String getDescription() {
 		return description;
 	}
+	/* (non-Javadoc)
+	 * @see com.bizflow.core.flow.config.IConfig#setDescription(java.lang.String)
+	 */
+	@Override
 	public void setDescription(String description) {
 		this.description = description;
 	} 

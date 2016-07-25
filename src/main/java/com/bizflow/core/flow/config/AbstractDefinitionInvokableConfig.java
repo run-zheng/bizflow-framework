@@ -6,7 +6,7 @@ import org.springframework.util.StringUtils;
 import com.bizflow.core.definition.AbstractDefinition;
 import com.bizflow.core.execute.IInvokable;
 
-public class AbstractDefinitionInvokableConfig extends AbstractConfig{
+public class AbstractDefinitionInvokableConfig extends AbstractConfig implements IDefinitionInvokableConfig{
 
 	/**
 	 * 
@@ -18,18 +18,34 @@ public class AbstractDefinitionInvokableConfig extends AbstractConfig{
 	private String defineName; 
 	private IInvokable<?> invoker; 
 	
+	/* (non-Javadoc)
+	 * @see com.bizflow.core.flow.config.IInvokableConfig#getInvoker()
+	 */
+	@Override
 	public IInvokable<?> getInvoker() {
 		return invoker;
 	}
 	
+	/* (non-Javadoc)
+	 * @see com.bizflow.core.flow.config.IInvokableConfig#setInvoker(com.bizflow.core.execute.IInvokable)
+	 */
+	@Override
 	public  void setInvoker(IInvokable<?> invoker) {
 		this.invoker = invoker;
 	}
 	
+	/* (non-Javadoc)
+	 * @see com.bizflow.core.flow.config.IDefinitionConfig#getDefineName()
+	 */
+	@Override
 	public String getDefineName() {
 		return defineName;
 	}
 	
+	/* (non-Javadoc)
+	 * @see com.bizflow.core.flow.config.IDefinitionConfig#setDefineName(java.lang.String)
+	 */
+	@Override
 	public void setDefineName(String defineName) {
 		this.defineName = defineName;
 	}
@@ -42,6 +58,10 @@ public class AbstractDefinitionInvokableConfig extends AbstractConfig{
 		}
 	}
 	
+	/* (non-Javadoc)
+	 * @see com.bizflow.core.flow.config.IDefinitionConfig#fromAbstractDefinition(com.bizflow.core.definition.AbstractDefinition)
+	 */
+	@Override
 	public void fromAbstractDefinition(AbstractDefinition definition){
 		Assert.notNull(definition);
 		if(!StringUtils.isEmpty(definition.getName() )){

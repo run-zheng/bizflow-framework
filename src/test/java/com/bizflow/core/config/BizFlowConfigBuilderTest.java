@@ -80,7 +80,7 @@ public class BizFlowConfigBuilderTest {
 						return null;
 					}
 				})
-				.processor("processorName")
+				.invokableProcessor("processorName")
 					.name("")
 					.alias("")
 					.description("")
@@ -97,6 +97,9 @@ public class BizFlowConfigBuilderTest {
 					.fromAbstractDefinition(new ProcessorDefinition())
 					.end()
 				.processor("processorName")
+					.invoker(null)
+					.fromAbstractDefinition(null)
+					.defineName("")
 					.beforeByDefineName("processorName")
 					.afterByDefineName("")
 					.onCompleteByDefineName("")

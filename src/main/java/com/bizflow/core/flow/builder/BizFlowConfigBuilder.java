@@ -45,12 +45,14 @@ public class BizFlowConfigBuilder extends AbstractConfigBuilder<BizFlowConfigBui
 		return myself(); 
 	}
 
-	public AbstractGroupBuilder<BizFlowConfigBuilder, AbstractGroupBuilder<?, ?, ?>, AbstractGroupConfig> processors() {
+	public <M extends AbstractGroupBuilder<BizFlowConfigBuilder, M, AbstractGroupConfig>> 
+		AbstractGroupBuilder<BizFlowConfigBuilder, M, AbstractGroupConfig> processors() {
 		// 默认sequence processor group 
 		return null;
 	}
 
-	public AbstractGroupBuilder<BizFlowConfigBuilder,  AbstractGroupBuilder<?, ?, ?>, AbstractGroupConfig> processors(String string) {
+	public <M extends AbstractGroupBuilder<BizFlowConfigBuilder, M, AbstractGroupConfig>> 
+		AbstractGroupBuilder<BizFlowConfigBuilder,  M, AbstractGroupConfig> processors(String string) {
 		// 默认sequence processor group
 		return null;
 	}
